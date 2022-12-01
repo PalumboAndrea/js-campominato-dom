@@ -40,17 +40,15 @@ let main = document.getElementById('main-square-container');
 function getMiniSquareColored(a, c, d, e){
     a.addEventListener('click', function(){
         if (c.includes(d)){
-            alert('Hai perso!');
+            alert('Hai perso con un punteggio di ' + e.length);
             a.classList.add('bomb-lose');
-            
-            
         } else {
             a.classList.add('right-square');
             e.push(d);
         }
 
         if (e.length>(100-16)){
-            alert('HAI VINTO!')
+            alert('HAI VINTO CON UN PUNTEGGIO DI ' + e.length);
         }
     })
 }
