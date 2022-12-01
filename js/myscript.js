@@ -41,11 +41,13 @@ let main = document.getElementById('main-square-container');
 function getMiniSquareColored(a, b, c, d){
     a.addEventListener('click', function(){
         if (c.includes(d)){
-            alert('Hai perso!')
-            a.classList.add('red')
+            alert('Hai perso!');
+            a.classList.add('bomb-lose');
+            a.innerHTML="";
         } else {
-            a.classList.add('light-blue')
+            a.classList.add('right-square');
             confirm("Hai selezionato la cella " + b);
+            
         }
     })
 }
@@ -60,11 +62,12 @@ button.addEventListener('click', function(){
     let bombList = [];
 
     while (bombList.length<16){
-        let randomBomb = randomNumber(1, 17)
+        let randomBomb = randomNumber(1, 100)
         if (!bombList.includes(randomBomb)){
             bombList.push(randomBomb);
         }
     }
+    console.log(bombList);
 
     for (let i=0; i<100; i++){
         let miniSquares;
@@ -72,7 +75,6 @@ button.addEventListener('click', function(){
         miniSquares.classList.add('mini-square', 'd-flex', 'justify-content-center', 'align-items-center');   
         mainSquare.append(miniSquares);
         num = num +1
-        miniSquares.append(num);
         getMiniSquareColored(miniSquares, i+1, bombList, num);
     }
     

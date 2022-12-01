@@ -8,28 +8,29 @@ main{
 }
 
 .main-square{
-    height: 80%;
-    width: 60%;
+    height: 500px;
+    width: 500px;
 }
 
 .mini-square{
+    background-color: rgb(189,189,189);
     width: calc(100% / 10);
     height: calc(100% / 10);
     border: 1px solid black;
 }
 
-.light-blue{
-    background-color: magenta;
+.right-square{
+    background-image: url(../img/21R-XRQZv2L.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 footer{
     height: 8vh;
  }
 
-.bomb{
-    background-color: red;
-}
-
-.red{
-    background-color: red;
+.bomb-lose{
+    background-image: url(../img/bomba.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
