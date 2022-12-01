@@ -16,7 +16,7 @@ main{
     background-color: rgb(189,189,189);
     width: calc(100% / 10);
     height: calc(100% / 10);
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .right-square{

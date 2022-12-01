@@ -35,19 +35,22 @@ function randomNumber(numMin, numMax){
     return random;
 }
 
-
 let main = document.getElementById('main-square-container');
 
-function getMiniSquareColored(a, b, c, d){
+function getMiniSquareColored(a, c, d, e){
     a.addEventListener('click', function(){
         if (c.includes(d)){
             alert('Hai perso!');
             a.classList.add('bomb-lose');
-            a.innerHTML="";
+            
+            
         } else {
             a.classList.add('right-square');
-            confirm("Hai selezionato la cella " + b);
-            
+            e.push(d);
+        }
+
+        if (e.length>(100-16)){
+            alert('HAI VINTO!')
         }
     })
 }
@@ -59,6 +62,8 @@ button.addEventListener('click', function(){
     main.append(mainSquare);
     let num = 0;
 
+    let goodChoice = [];
+
     let bombList = [];
 
     while (bombList.length<16){
@@ -67,15 +72,16 @@ button.addEventListener('click', function(){
             bombList.push(randomBomb);
         }
     }
-    console.log(bombList);
+    
+
 
     for (let i=0; i<100; i++){
-        let miniSquares;
-        miniSquares = document.createElement('div');
-        miniSquares.classList.add('mini-square', 'd-flex', 'justify-content-center', 'align-items-center');   
-        mainSquare.append(miniSquares);
-        num = num +1
-        getMiniSquareColored(miniSquares, i+1, bombList, num);
+        let miniSquare;
+        miniSquare = document.createElement('div');
+        miniSquare.classList.add('mini-square', 'd-flex', 'justify-content-center', 'align-items-center');   
+        mainSquare.append(miniSquare);
+        num = num +1;
+        getMiniSquareColored(miniSquare, bombList, num, goodChoice);
     }
     
 })
