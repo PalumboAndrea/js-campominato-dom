@@ -1,0 +1,35 @@
+header{
+    height: 12vh;
+}
+
+main{
+    background-color: rgb(127,255,211);
+    height: 80vh;
+}
+
+.main-square{
+    height: 80%;
+    width: 60%;
+}
+
+.mini-square{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 1px solid black;
+}
+
+.light-blue{
+    background-color: magenta;
+}
+
+footer{
+    height: 8vh;
+ }
+
+.bomb{
+    background-color: red;
+}
+
+.red{
+    background-color: red;
+}
