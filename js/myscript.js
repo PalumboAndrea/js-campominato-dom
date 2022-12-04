@@ -37,14 +37,81 @@ function randomNumber(numMin, numMax){
 
 let main = document.getElementById('main-square-container');
 
+
+
+/*
+miniSquare = a
+bombList = c
+num = d
+goodChoice = e
+*/
+
+const proximityArrayGeneral = [-11, -10, -9, -1, 1, 9, 10, 11];
+const proximityArrayLeft = [-10, -9, 1, 10, 11];
+const proximityArrayRight = [-11, -10, -1, 9, 10];
+
 function getMiniSquareColored(a, c, d, e){
+
     a.addEventListener('click', function(){
+        let base = 0;
+        let piùDieci = c.includes(d + 10);
+        let menoDieci = c.includes(d - 10);
+        let piùUno = c.includes(d + 1);
+        let menoUno = c.includes(d - 1);
+
+        const lastDigit2Str = String(d).slice(-1);
+        console.log(lastDigit2Str);
+
+        if (lastDigit2Str != 1 & lastDigit2Str != 0){
+            a.append('');
+            for (i=0; i<proximityArrayGeneral.length; i++){
+                if (c.includes(d + proximityArrayGeneral[i])){
+                    
+                    base += 1;
+                    console.log(proximityArrayGeneral[i]);
+                } else {
+                    console.log('tranquillo');
+                }
+            }
+            a.innerHTML = base;
+            a.classList.add('right-square');
+            
+        }   if (lastDigit2Str == 1){
+            a.append('');
+            for (i=0; i<proximityArrayLeft.length; i++){
+                if (c.includes(d + proximityArrayLeft[i])){
+                    
+                    base += 1;
+                    console.log(proximityArrayLeft[i]);
+                } else {
+                    console.log('tranquillo');
+                }
+            }
+            a.innerHTML = base;
+            a.classList.add('right-square');
+        }   if (lastDigit2Str == 0){
+            a.append('');
+            for (i=0; i<proximityArrayRight.length; i++){
+                if (c.includes(d + proximityArrayRight[i])){
+                    
+                    base += 1;
+                    console.log(proximityArrayRight[i]);
+                } else {
+                    console.log('tranquillo');
+                }
+            }
+            a.innerHTML = base;
+            a.classList.add('right-square');
+        }
+        
+    
         if (c.includes(d)){
             alert('Hai perso con un punteggio di ' + e.length);
             a.classList.add('bomb-lose');
         } else {
-            a.classList.add('right-square');
+            // a.classList.add('right-square');
             e.push(d);
+            
         }
 
         if (e.length>(100-16)){
@@ -70,8 +137,10 @@ button.addEventListener('click', function(){
             bombList.push(randomBomb);
         }
     }
+
     
 
+    console.log(bombList);
 
     for (let i=0; i<100; i++){
         let miniSquare;
@@ -79,10 +148,22 @@ button.addEventListener('click', function(){
         miniSquare.classList.add('mini-square', 'd-flex', 'justify-content-center', 'align-items-center');   
         mainSquare.append(miniSquare);
         num = num +1;
+        miniSquare.append(num);
         getMiniSquareColored(miniSquare, bombList, num, goodChoice);
     }
+
+    
+
+
     
 })
+
+
+
+
+
+
+
 
 
 
