@@ -81,7 +81,7 @@ function getMiniSquareColored(miniSquareHere, bombListHere, numHere, goodChoiceH
         if (bombListHere.includes(numHere)){
             alert('Hai perso con un punteggio di ' + goodChoiceHere.length);
             miniSquareHere.classList.add('bomb-lose');
-
+            setTimeout(location.reload(), 5000);
         } else {
             miniSquareHere.classList.add('right-square');
             goodChoiceHere.push(numHere);
